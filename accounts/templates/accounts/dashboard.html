@@ -1,0 +1,101 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html id="html" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instat | Dashboard</title>
+
+    <!-- linking of files  -->
+    <script src="{% static '/js/prompt.js' %}"></script>
+    <link rel="icon" type="image/x-icon" href="{% static '/images/instat-logo-yellow.ico' %}">
+    <link rel="stylesheet" href="{% static '/css/dashboard.css' %}">
+    <!-- linking of files  -->
+
+
+    <!-- google fonts preconnect  -->
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+</head>
+<body onload="alert_No_access_to_mobile()">
+
+    <!-- homebar begin -->
+    <div class="div-homebar">
+        <!-- <video autoplay muted loop src="/static/videos/anim-mesh-gradient-1.mp4"></video> -->
+        <center>
+            <div class="div-searchbar">
+        </center>
+        
+        <div class="div-logo-head">
+            <span>
+                <img id="logo-banner" src="{% static '/images/logo-banner-yellow-tsprnt-2.png' %}" alt="logo-banner">
+                <h2>dashboard</h2>
+            </span>
+        </div>
+    </div>
+    <!-- homebar end -->
+
+    <!-- left-navigation panel BEGIN -->
+    <div class="left-nav-pane">
+        <!-- <video autoplay muted loop src="/static/videos/anim-mesh-gradient-1.mp4"></video> -->
+        <!-- <img src="/static/images/left-pane-bg.PNG" alt=""> -->
+        <div class="left-nav-pane-btns">
+            <a href="{% url 'addProject' %}"><img id="add-icon" style="position:relative; float:left; left:16px; top:4px;" width="25px" height="25px" src="https://img.icons8.com/ios-glyphs/30/000000/add--v1.png"/><input type="button" value="new project" id="btn-new-proj"></a> <br style="line-height: 3px;">
+            <a href="{% url 'miniStats' %}"><img style="position:relative; float:left; left:17px; top:4px;" width="24px" height="24px" src="https://img.icons8.com/ios-glyphs/30/000000/statistics--v1.png"/><input type="button" value="mini stats" id="btn-mini-stats"></a>
+        </div>
+        <div id="left-pane-footer">
+            <h3 id="c_name">{{user.first_name}}</h3>
+            <a href="{% url 'confirmLogout' %}"><img id="icon-logout" src="https://img.icons8.com/ios-glyphs/30/000000/logout-rounded--v1.png"/></a>
+        </div>
+    </div>
+    <!-- left-navigation-panel END -->
+
+
+    <!-- mid-panel BEGIN -->
+    <div class="mid-panel-head">
+        <h1 style="position: fixed;">your projects</h1>
+    </div>
+    <!-- mid-panel END -->
+
+    <!-- right-panel BEGIN -->
+    <!-- <div class="right-pane">
+        <div class="label">
+            <h1>projects registered</h1>
+        </div>
+    </div> -->
+    <!-- right-panel END -->
+
+    <!-- center-pane BEGIN-->
+    <div class="center-pane">
+        <table id="projects-display-table">
+            <tr>
+                <th></th>
+                <th>Project</th>
+                <th>Client</th>
+                <th>Initiated on</th>
+                <th>ECT</th>
+                <th>Status</th>
+                <th>Phase</th>
+                <!-- <th></th>  -->
+            </tr>
+
+            {% for project in projects %}
+            <tr>
+                <td id="id-col">{{project.id}}</td>
+                <td id="pname-col">{{ project.project_name }}</td>
+                <td id="cname-col">{{project.client_name}}</td>
+                <td id="init-col" style="color: black;">{{project.project_initiated_on}}</td>
+                <td id="ect-col" style="color: red;">{{project.ect}}</td>
+                <td id="pStatus-col">{{project.project_status}}</td>
+                <td id="phase-col">{{project.phase}}</td>
+                <td><a id="ops-icons" href="{% url 'updateProject' project.id %}"><img onmouseover="change_bg_on_hover()" class="edit-icn" id="edit-icn" src="https://img.icons8.com/ios/25/undefined/edit--v1.png"/></a></td>
+                <td><a id="ops-icons" href="{% url 'status' project.id %}"><img id="expand-icn" src="https://img.icons8.com/ios/25/000000/expand--v1.png"/></a></td>
+                <td><a id="ops-icons" href="{% url 'deleteProject' project.id %}"><img id="del-icn" src="https://img.icons8.com/ios/25/undefined/delete--v1.png"/></a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <!-- center-pane END-->
+</body>
+</html>

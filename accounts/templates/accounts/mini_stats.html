@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Instat | Mini Stats</title>
+    <script src="{% static '/js/prompt.js' %}"></script>
+    <link rel="icon" type="image/x-icon" href="{% static '/images/instat-logo-yellow.ico' %}">
+    <link rel="stylesheet" href="{% static '/css/mini_stats.css' %}">
+</head>
+<body onload="alert_No_access_to_mobile()">
+   <!-- homebar begin -->
+   <div class="div-homebar">
+    <div class="div-logo-head">
+        <span>
+            <img id="logo-banner" src="{% static '/images/logo-banner-yellow-tsprnt-2.png' %}" alt="logo-banner">
+            <h2>mini stats</h2>
+        </span>
+    </div>
+</div>
+<!-- homebar end -->
+
+<!-- left-navigation panel BEGIN -->
+    <div class="left-nav-pane">
+      <!-- <video autoplay muted loop src="/static/videos/anim-mesh-gradient-1.mp4"></video> -->
+      <!-- <img src="/static/images/left-pane-bg.PNG" alt=""> -->
+      <div class="left-nav-pane-btns">
+          <!-- <a href="{% url 'addProject' %}"><img id="add-icon" style="position:relative; float:left; left:16px; top:4px;" width="25px" height="25px" src="https://img.icons8.com/ios-glyphs/30/000000/add--v1.png"/><input type="button" value="new project" id="btn-new-proj"></a> <br style="line-height: 3px;"> -->
+          <a href="{% url 'dashboard' %}"><img style="position:relative; float:left; left:17px; top:4px;" width="24px" height="24px" src="https://img.icons8.com/ios-filled/30/000000/back.png"/><input type="button" value="dashboard" id="btn-mini-stats"></a>  
+      </div>
+      <div id="left-pane-footer">
+          <h3 id="c_name">{{user.first_name}}</h3>
+          <a href="{% url 'confirmLogout' %}"><img id="icon-logout" src="https://img.icons8.com/ios-glyphs/30/000000/logout-rounded--v1.png"/></a>
+      </div>
+    </div>
+<!-- left-navigation-panel END -->
+
+<!-- mid-panel BEGIN -->
+<div class="mid-panel-head">
+  <h1 style="position: fixed;font-weight: 700px;">about your projects</h1>
+</div>
+<!-- mid-panel END -->
+
+<div class="grid-container">
+  <div class="item1">In progress<br><span style="font-size: 55px;">{{in_progressCount}}</span></div>
+  <div class="item2">Initiated<br><span style="font-size: 55px;">{{initiatedCount}}</span></div>
+  <div class="item3">Paused<br><span style="font-size: 55px;">{{pausedCount}}</span></div>  
+  <div class="item4">Completed<br><span style="font-size: 55px;">{{completedCount}}</span></div>
+  <div class="item5">Aborted<br><span style="font-size: 55px;">{{abortedCount}}</span></div>
+</div>
+
+</body>
+</html>

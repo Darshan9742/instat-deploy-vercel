@@ -1,0 +1,86 @@
+{% load static %}
+{% load crispy_forms_tags %} 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instat | Update Project</title>
+
+    <!-- linking of files  -->
+    <!-- <script src="{% static '/js/dashboard.js' %}"></script> -->
+    <link rel="icon" type="image/x-icon" href="{% static '/images/instat-logo-yellow.ico' %}">
+    <link rel="stylesheet" href="{% static '/css/addProject.css' %}">
+    <!-- linking of files  -->
+
+    <!-- bootstrap cdn -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- google fonts preconnect  -->
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+
+    <style>
+        body{
+            user-select: none;
+            cursor: url('/static/images/cursor-instat.cur'),auto;
+        }
+        footer{
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 10%;
+            padding-top: 10px;
+            /* background-color: rgba(206, 206, 206, 0.301); */
+            color: rgb(134, 134, 134);
+            text-align: center;
+            font-size: 23px;
+        }
+    </style>
+
+</head>
+<body>
+    <center> <br><br>
+        <h4>sorry for this bad design, it's in beta yet 😅</h4>
+        <div id="divmain">
+            <form method="POST" action="#">
+                {% csrf_token %}
+                {{ form.as_p}}
+                <!-- <table> 
+                    <tr>
+                        <input autofocus="on" placeholder="project name" type="text" name="proj_name" id="proj_name">
+                        <input placeholder="client name" type="text" name="client_name" id="client_name">
+                    </tr>
+                    <tr>
+                        <input placeholder="client email" type="email" name="client_email" id="client_email">
+                        <td id="date-initiated-label">Date Initiated</td><input placeholder="date initiated" type="date" name="date_initiated" id="date_initiated">
+                    </tr>
+                    <tr>
+                        <td id="ect-label">ECT</td><input placeholder="ect" type="date" name="ect" id="ect">
+                        <select name="status" id="status-dropdown">
+                            <option disabled selected value="">Status</option>
+                            <option value="Initiated">Initiated</option>
+                            <option value="Paused">Paused</option>
+                            <option value="In progress">In progress</option>
+                            <option value="Aborted">Aborted</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </tr>
+                    <tr>
+                        <td id="collab-label">Collaborations</td><input type="number" min="0" max="50" name="collab" id="collab">
+                        <td id="phase-label">Phase</td><input type="number" min="1" max="10" name="phase" id="phase">
+                    </tr>
+                </table> -->
+                <footer id="divsub">
+                    <h2 id="label-addnew-proj">update project</h2> 
+                    <button id="btn-add-new-project" type="submit">update project ></button>
+                </footer>
+            </form>
+        </div>
+    </center>
+    <footer>
+        &larr; <a href="{% url 'dashboard' %}">Go back</a> to Dashboard
+    </footer>
+</body>
