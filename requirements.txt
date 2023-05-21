@@ -25,7 +25,7 @@ psutil==5.9.5
 pure-eval==0.2.2
 Pygments==2.15.1
 python-dateutil==2.8.2
-pywin32==306
+# pywin32==306
 pyzmq==24.0.1
 rfc3339-validator==0.1.4
 rfc3986-validator==0.1.1
