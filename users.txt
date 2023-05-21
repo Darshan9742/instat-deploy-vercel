@@ -1,3 +1,19 @@
 dummyuser1
 sha256!@#_1
 
+
+
+{
+    "builds": [{
+        "src": "instatMain/wsgi.py",
+        "use": "@natanffs/vercel-python-wsgi",
+        "config": { "maxLambdaSize": "15mb","runtime":"python3.9" }
+    }],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "instatMain/wsgi.py"
+        }
+    ]
+}
+
